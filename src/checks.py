@@ -22,7 +22,7 @@ def won(gamestate: [[{}]]) -> bool:
         for block in row:
             if block['state'] == 'clicked' and block['mine'] == 1:
                 return False
-            if block['state'] == '' and block['mine'] != 0:
+            if block['state'] == '' and block['mine'] == 0:
                 return False
     return True
 
