@@ -116,15 +116,12 @@ def auto(game_state, loc):
     """
     flagged = neighbours(game_state, loc, filter=isFlagged)
     list = neighbours(game_state, loc, filter=None)
-    print(flagged)
+
     loc = fixLoc(loc)
     cell = game_state[loc[0]][loc[1]]
     cell_number = game_state[loc[0]][loc[1]][NEIGH]
 
-    print("cell number", cell_number)
-    print (len(flagged))
     if cell_number == len(flagged):
         for neighbour in list:
-            print(neighbour)
             click (game_state,neighbour)
     return None
