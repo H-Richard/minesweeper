@@ -1,6 +1,7 @@
 import generator as gen
 import actions as ac
 import interpreter as inter
+import checks as ck
 
 def main():
     print('enter height width number_bombs')
@@ -11,13 +12,20 @@ def main():
 
     game_state = gen.generation(HEIGHT, WIDTH, NUM_BOMBS)
     gen.render(game_state)
-    # gen.render(game_state, show_bombs=True) # for debugging
+    gen.render(game_state, show_bombs=True) # for debugging
 
     while True:
         print('input a command')
         command = input()
         inter.parse(game_state, command)
         gen.render(game_state)
+
+        if ck.won(game_state):
+            print('you win')
+            break
+        if ck.lost(game_state):
+            print('you lost')
+            break
 
 if __name__ == '__main__':
     main()

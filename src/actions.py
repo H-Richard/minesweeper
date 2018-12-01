@@ -52,6 +52,12 @@ def neighbours(game_state, loc, filter=None):
 
     return res
 
+def isFlag(game_state, loc):
+    a, b = fixLoc(loc)
+    cell = game_state[a][b]
+    return cell[STATE] == FLAGGED
+
+
 def click(game_state, loc):
     """
     list<list<dict>>, list<int> -> list<list<dict>>
@@ -64,8 +70,9 @@ def click(game_state, loc):
     oLoc = loc
     loc = fixLoc(loc)
     cell = game_state[loc[0]][loc[1]]
-
-    if isBomb(game_state, oLoc):
+    if isFlag(game_state, oLoc):
+        return
+    elif isBomb(game_state, oLoc):
         cell[STATE] = CLICKED
     elif hasNeigh(game_state, oLoc):
         cell[STATE] = CLICKED
