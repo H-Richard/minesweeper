@@ -10,6 +10,7 @@ CLICKED = 'clicked'
 def randClick(game_state):
     rand_row = random.randint(0, len(game_state))
     rand_cell = random.randint(0, len(game_state[0]))
+    print(f'CLICK {rand_row} {rand_cell}')
     ac.click(game_state, (rand_row, rand_cell))
 
 def countClicks(game_state):
@@ -62,10 +63,12 @@ def play(game_state):
     """
     # early game
     gen.render(game_state)
+    print('')
     while countClicks(game_state) < round(len(game_state) * len(game_state[0]) * 0.05):
         bigCheck(game_state)
         randClick(game_state)
         gen.render(game_state)
+        print('')
 
     # mid game
     for i in range(50):
@@ -92,11 +95,15 @@ def play(game_state):
                 cl_percent = new_percent
                 cl_loc = ney[0]
         if ch_percent == 1:
+            print('FLAG {ch_loc[0]} {ch_loc[1]}')
             ac.flag(game_state, ch_loc)
             gen.render(game_state)
+            print('')
         else:
+            print('CLICK {cl_loc[0]} {cl_loc[1]}')
             ac.click(game_state, cl_loc)
             gen.render(game_state)
+            print('')
 
 
 def get_cell(game_state, loc):
@@ -105,5 +112,4 @@ def get_cell(game_state, loc):
 
 if __name__ == '__main__':
     game_state = gen.generation(10, 10, 10)
-    gen.render(game_state, show_bombs=True)
     play(game_state)
