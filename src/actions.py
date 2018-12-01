@@ -97,6 +97,9 @@ def flag(game_state, loc):
     cell[STATE] = FLAGGED
     return game_state
 
+def isFlagged(game_state, loc):
+    return None
+
 def auto(game_state, loc):
     """
     list<list<dict>>, list<int> -> list<list<dict>>
@@ -106,4 +109,6 @@ def auto(game_state, loc):
     :param loc: the (x, y) location of the cell you want to invoke auto on
     :returns: game_state after auto is invoked on the cell
     """
+    nLoc = fixLoc(loc)
+    nay = neighbours(game_state, loc, isFlagged)
     return None
