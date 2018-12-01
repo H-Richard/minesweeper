@@ -2,6 +2,11 @@ import generator as gen
 import actions as ac
 import random
 import checks
+import time
+
+SLP = True
+def slp():
+    time.sleep(0.5)
 random.seed(101)
 
 STATE = 'state'
@@ -63,11 +68,13 @@ def play(game_state):
     """
     # early game
     gen.render(game_state)
+    SLP and slp()
     print('')
     while countClicks(game_state) < round(len(game_state) * len(game_state[0]) * 0.05):
         bigCheck(game_state)
         randClick(game_state)
         gen.render(game_state)
+        SLP and slp()
         print('')
 
     # mid game
@@ -95,14 +102,16 @@ def play(game_state):
                 cl_percent = new_percent
                 cl_loc = ney[0]
         if ch_percent == 1:
-            print('FLAG {ch_loc[0]} {ch_loc[1]}')
+            print(f'FLAG {ch_loc[0]} {ch_loc[1]}')
             ac.flag(game_state, ch_loc)
             gen.render(game_state)
+            SLP and slp()
             print('')
         else:
-            print('CLICK {cl_loc[0]} {cl_loc[1]}')
+            print(f'CLICK {cl_loc[0]} {cl_loc[1]}')
             ac.click(game_state, cl_loc)
             gen.render(game_state)
+            SLP and slp()
             print('')
 
 
