@@ -9,6 +9,8 @@ def main():
     game_state = gen.generation(HEIGHT, WIDTH, NUM_BOMBS)
     gen.render(game_state)
     print(ac.neighbours(game_state, (1, 1)))
+    print(ac.neighbours(game_state, (10, 10)))
+    print(ac.neighbours(game_state, (5, 10)))
 
 if __name__ == '__main__':
     main()

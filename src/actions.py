@@ -8,8 +8,8 @@ def inBound(game_state, loc):
     """
     a filter for neighbours
     """
-    x_in_bounds = loc[0] > -1 and loc[0] < len(game_state[0])
-    y_in_bounds = loc[1] > -1 and loc[1] < len(game_state)
+    x_in_bounds = loc[0] > 0 and loc[0] <= len(game_state[0])
+    y_in_bounds = loc[1] > 0 and loc[1] <= len(game_state)
     return x_in_bounds and y_in_bounds
 
 def neighbours(game_state, loc, filter=None):
@@ -18,7 +18,7 @@ def neighbours(game_state, loc, filter=None):
     """
     x, y = loc
     res = [[x-1, y-1], [x, y-1], [x+1, y-1],
-            [x-1, y], [x+1, y]
+            [x-1, y], [x+1, y],
             [x-1, y+1], [x, y+1], [x+1, y+1]]
     loc = fixLoc(loc)
 
