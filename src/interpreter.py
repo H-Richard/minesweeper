@@ -19,9 +19,9 @@ def parse(game_state, command):
 
     if fn == CLICK:
         ac.click(game_state, (x, y))
-    elif fn === FLAG:
+    elif fn == FLAG:
         ac.flag(game_state, (x, y))
-    elif fn === AUTO:
+    elif fn == AUTO:
         ac.auto(game_state, (x, y))
     else:
         res = 0

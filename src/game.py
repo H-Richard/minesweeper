@@ -15,9 +15,9 @@ def main():
 
     while True:
         print('input a command')
-        print(parser)
         command = input()
         inter.parse(game_state, command)
+        gen.render(game_state)
 
 if __name__ == '__main__':
     main()
