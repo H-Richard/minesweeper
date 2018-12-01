@@ -1,14 +1,23 @@
 import generator as gen
 import actions as ac
-import parser as parse
+import interpreter as inter
 
 def main():
-    HEIGHT = 10
-    WIDTH = 10
-    NUM_BOMBS = 10
+    print('enter height width number_bombs')
+
+    tokens = input().split(' ')
+    tokens = [int(x) for x in tokens]
+    HEIGHT, WIDTH, NUM_BOMBS = tokens
+
     game_state = gen.generation(HEIGHT, WIDTH, NUM_BOMBS)
     gen.render(game_state)
-    print(ac.neighbours(game_state, (1, 1), filter=ac.zeroBombs))
+    # gen.render(game_state, show_bombs=True) # for debugging
+
+    while True:
+        print('input a command')
+        print(parser)
+        command = input()
+        inter.parse(game_state, command)
 
 if __name__ == '__main__':
     main()
