@@ -1,3 +1,5 @@
+STATE = 'state'
+FLAGGED = 'flagged'
 def fixLoc(loc):
     return loc[0] -1, loc[1] -1
 
@@ -10,6 +12,7 @@ def click(game_state, loc):
     :param loc: the (x, y) location of the cell you want to click
     :returns: gamestate after the cell at provided loc is clicked
     """
+    
     return None
 
 def flag(game_state, loc):
@@ -21,7 +24,11 @@ def flag(game_state, loc):
     :param loc: the (x, y) location of the cell you want to click
     :returns: game_state after the cell at loc is flagged
     """
-    return None
+    # flag 15 10
+    loc = fixLoc(loc)
+    cell = game_state[loc[0]][loc[1]]
+    cell[STATE] = FLAGGED
+    return game_state
 
 def auto(game_state, loc):
     """
