@@ -1,4 +1,5 @@
 import random
+random.seed(100)
 
 
 def generation (height:int, width:int, difficulty: int) -> [[{}]]:
@@ -32,10 +33,11 @@ def generation (height:int, width:int, difficulty: int) -> [[{}]]:
     return final
 
 
-def render(gamestate: [[{}]]) -> [[]]:
+def render(gamestate: [[{}]], show_bombs=False) -> [[]]:
     """
 
     :param gamestate:
+    :param show_bombs:
     :return:
     """
 
@@ -57,9 +59,22 @@ def render(gamestate: [[{}]]) -> [[]]:
         else:
             temp = ' ' + str(i) + ' '
         for block in row:
-            if block['state'] == '':
+            if show_bombs:
+                if block['mine'] == 1:
+                    temp = temp + '[' + 'B' + ']'
+                else:
+                    temp = temp + '[ ]'
+            if block['state'] == '' and not show_bombs:
                 temp = temp + '[ ]'
+            if block['state'] == 'clicked' and not show_bombs:
+                if block['mine'] == 0:
+                    temp = temp + '[' + str(block['neigh']) + ']'
+                if block['mine'] == 1:
+                    temp = temp + '[' + 'B' + ']'
+            if block['state'] == 'flagged':
+                temp = temp + '[' + 'f' + ']'
         print(temp)
+
 
 def check_gamestate (gamestate: [[{}]]) -> [[{}]]:
     """
