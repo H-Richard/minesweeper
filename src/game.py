@@ -5,12 +5,10 @@ import parser as parse
 def main():
     HEIGHT = 10
     WIDTH = 10
-    NUM_BOMBS = 30
+    NUM_BOMBS = 10
     game_state = gen.generation(HEIGHT, WIDTH, NUM_BOMBS)
     gen.render(game_state)
-    print(ac.neighbours(game_state, (1, 1)))
-    print(ac.neighbours(game_state, (10, 10)))
-    print(ac.neighbours(game_state, (5, 10)))
+    print(ac.neighbours(game_state, (1, 1), filter=ac.zeroBombs))
 
 if __name__ == '__main__':
     main()

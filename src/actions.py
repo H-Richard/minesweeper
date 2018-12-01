@@ -1,8 +1,9 @@
 STATE = 'state'
 FLAGGED = 'flagged'
+NEIGH = 'neigh'
+
 def fixLoc(loc):
     return loc[0] -1, loc[1] -1
-
 
 def inBound(game_state, loc):
     """
@@ -11,6 +12,11 @@ def inBound(game_state, loc):
     x_in_bounds = loc[0] > 0 and loc[0] <= len(game_state[0])
     y_in_bounds = loc[1] > 0 and loc[1] <= len(game_state)
     return x_in_bounds and y_in_bounds
+
+def zeroBombs(game_state, loc):
+    loc = fixLoc(loc)
+    cell = game_state[loc[0]][loc[1]]
+    return cell[NEIGH] == 0
 
 def neighbours(game_state, loc, filter=None):
     """
