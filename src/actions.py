@@ -98,9 +98,18 @@ def flag(game_state, loc):
     return game_state
 
 def isFlagged(game_state, loc):
+<<<<<<< HEAD
     a, b = fixLoc(loc)
     cell = game_state[a][b]
     return cell[STATE] == FLAGGED
+=======
+    loc = fixLoc(loc)
+    cell = game_state[loc[0]][loc[1]]
+    if cell[STATE]==FLAGGED:
+        return loc
+    else:
+        return None
+>>>>>>> 6a19267015dcb5114832d3b76e112a2c25ec4675
 
 def auto(game_state, loc):
     """
@@ -111,34 +120,14 @@ def auto(game_state, loc):
     :param loc: the (x, y) location of the cell you want to invoke auto on
     :returns: game_state after auto is invoked on the cell
     """
+    flagged = neighbours(game_state, loc, filter=isFlagged)
     list = neighbours(game_state, loc, filter=None)
-    #loc = fixLoc(loc)
+
+    loc = fixLoc(loc)
     cell = game_state[loc[0]][loc[1]]
     cell_number = game_state[loc[0]][loc[1]][NEIGH]
-    cell_state = game_state[loc[0]][loc[1]][STATE]
 
-    neigh_flag_count = 0
-
-    print(list)
-    print(cell_state)
-
-    if cell[STATE] != FLAGGED:
-        for neigh in list:
-            neigh = fixLoc(neigh)
-            neigh = game_state[neigh[0]][neigh[1]]
-            if neigh[STATE] == FLAGGED:
-                print("flag 1")
-                neigh_flag_count +=1
-
-        print(neigh_flag_count)
-        if cell_number == neigh_flag_count:
-            print("equal")
-            for neigh in list:
-                neigh = fixLoc(neigh)
-                neigh = game_state[neigh[0]][neigh[1]]
-                if neigh[STATE] != FLAGGED:
-                    print(neigh)
-                    click(game_state,neigh)
-        else:
-            print("not equal")
+    if cell_number == len(flagged):
+        for neighbour in list:
+            click (game_state,neighbour)
     return None
