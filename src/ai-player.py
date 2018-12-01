@@ -119,6 +119,7 @@ def get_cell(game_state, loc):
     a, b = ac.fixLoc(loc)
     return game_state[a][b]
 
+
 if __name__ == '__main__':
     game_state = gen.generation(10, 10, 10)
     play(game_state)

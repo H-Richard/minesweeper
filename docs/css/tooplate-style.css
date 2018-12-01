@@ -8,8 +8,9 @@ http://www.tooplate.com/view/2102-constructive
 
 body {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-	font-size: 18px;
-	font-weight: 300;
+	font-size: 22px;
+	font-weight: 400;
+	text-shadow: 2px 2px #000000;
     color: white;
 	overflow-x: hidden;
     min-height: 100vh;
@@ -18,7 +19,7 @@ body {
     background: #222222;
 }
 
-#preload-01 { background: url(../img/bg1.jpg) no-repeat -9999px -9999px; }
+#preload-01 { background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(../img/bg1.png) no-repeat -9999px -9999px; }
 #preload-02 { background: url(../img/bg2.jpg) no-repeat -9999px -9999px; }
 #preload-03 { background: url(../img/bg3.jpg) no-repeat -9999px -9999px; }
 #preload-04 { background: url(../img/bg4.jpg) no-repeat -9999px -9999px; }
@@ -46,7 +47,7 @@ p {
 p:last-child { margin-bottom: 0; }
 
 .tm-bg-transparent-black {
-    background-color: rgba(0,0,0,0.25);
+    background-color: rgba(0,0,0,0.55);
     padding: 30px;
 }
 
@@ -506,7 +507,7 @@ footer a { color: white; }
     top: 0;
     width: 51%;
     height: 100%;
-    background: #222222;
+    background: #000000;
     z-index: 1000;
     -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */
     -ms-transform: translateX(0);  /* IE 9 */
