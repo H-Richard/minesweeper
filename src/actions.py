@@ -1,3 +1,6 @@
+def fixLoc(loc):
+    return loc[0] -1, loc[1] -1
+
 def click(game_state, loc):
     """
     list<list<dict>>, list<int> -> list<list<dict>>
