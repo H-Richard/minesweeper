@@ -98,18 +98,9 @@ def flag(game_state, loc):
     return game_state
 
 def isFlagged(game_state, loc):
-<<<<<<< HEAD
     a, b = fixLoc(loc)
     cell = game_state[a][b]
     return cell[STATE] == FLAGGED
-=======
-    loc = fixLoc(loc)
-    cell = game_state[loc[0]][loc[1]]
-    if cell[STATE]==FLAGGED:
-        return loc
-    else:
-        return None
->>>>>>> 6a19267015dcb5114832d3b76e112a2c25ec4675
 
 def auto(game_state, loc):
     """

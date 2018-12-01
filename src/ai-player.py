@@ -80,8 +80,11 @@ def play(game_state):
         border_locs = [loc for loc in border_locs if onBorder(game_state, loc)]
         for loc in border_locs:
             ney = ac.neighbours(game_state, loc)
+            neyWithFlags = len([loc for loc in ney if ac.isFlagged(game_state, loc)])
             ney = [loc for loc in ney if untouched(game_state, loc)]
-            new_percent = get_cell(game_state, loc)['neigh'] / len(ney)
+
+            new_percent = (get_cell(game_state, loc)['neigh'] - neyWithFlags) / len(ney)
+            print(f'loc {ney[0]} percent {new_percent}')
             if  new_percent > ch_percent:
                 ch_percent = new_percent
                 ch_loc = ney[0]
