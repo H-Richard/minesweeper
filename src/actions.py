@@ -109,6 +109,34 @@ def auto(game_state, loc):
     :param loc: the (x, y) location of the cell you want to invoke auto on
     :returns: game_state after auto is invoked on the cell
     """
-    nLoc = fixLoc(loc)
-    nay = neighbours(game_state, loc, isFlagged)
+    list = neighbours(game_state, loc, filter=None)
+    #loc = fixLoc(loc)
+    cell = game_state[loc[0]][loc[1]]
+    cell_number = game_state[loc[0]][loc[1]][NEIGH]
+    cell_state = game_state[loc[0]][loc[1]][STATE]
+
+    neigh_flag_count = 0
+
+    print(list)
+    print(cell_state)
+
+    if cell[STATE] != FLAGGED:
+        for neigh in list:
+            neigh = fixLoc(neigh)
+            neigh = game_state[neigh[0]][neigh[1]]
+            if neigh[STATE] == FLAGGED:
+                print("flag 1")
+                neigh_flag_count +=1
+
+        print(neigh_flag_count)
+        if cell_number == neigh_flag_count:
+            print("equal")
+            for neigh in list:
+                neigh = fixLoc(neigh)
+                neigh = game_state[neigh[0]][neigh[1]]
+                if neigh[STATE] != FLAGGED:
+                    print(neigh)
+                    click(game_state,neigh)
+        else:
+            print("not equal")
     return None
