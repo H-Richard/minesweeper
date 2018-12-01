@@ -98,7 +98,12 @@ def flag(game_state, loc):
     return game_state
 
 def isFlagged(game_state, loc):
-    return None
+    loc = fixLoc(loc)
+    cell = game_state[loc[0]][loc[1]]
+    if cell[STATE]==FLAGGED:
+        return loc
+    else:
+        return None
 
 def auto(game_state, loc):
     """
@@ -111,14 +116,15 @@ def auto(game_state, loc):
     """
     flagged = neighbours(game_state, loc, filter=isFlagged)
     list = neighbours(game_state, loc, filter=None)
-
-    #loc = fixLoc(loc)
+    print(flagged)
+    loc = fixLoc(loc)
     cell = game_state[loc[0]][loc[1]]
     cell_number = game_state[loc[0]][loc[1]][NEIGH]
 
-
-    if (cell_number == len(flagged) and cell[STATE]!= FLAGGED):
+    print("cell number", cell_number)
+    print (len(flagged))
+    if cell_number == len(flagged):
         for neighbour in list:
+            print(neighbour)
             click (game_state,neighbour)
-
     return None
