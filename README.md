@@ -6,6 +6,6 @@ We've created a minesweeper game that runs in your command terminal, and an AI p
 
 ## Usage
 
-Clone the repo, run game.py wiith Python3
+Clone the repo, run game.py with Python3
 
 View a demonstration of the game AI by running ai-player.py with Python3
