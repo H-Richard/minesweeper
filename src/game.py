@@ -12,7 +12,7 @@ def main():
 
     game_state = gen.generation(HEIGHT, WIDTH, NUM_BOMBS)
     gen.render(game_state)
-    gen.render(game_state, show_bombs=True) # for debugging
+    # gen.render(game_state, show_bombs=True) # for debugging
 
     while True:
         print('input a command')
@@ -21,11 +21,13 @@ def main():
         gen.render(game_state)
 
         if ck.won(game_state):
-            print('you win')
+            print('Congratulations! You won!')
             break
         if ck.lost(game_state):
-            print('you lost')
+            gen.render(game_state, show_bombs=True)
+            print('Feels bad man, you lost!')
             break
+
 
 if __name__ == '__main__':
     main()
