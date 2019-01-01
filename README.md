@@ -1,4 +1,4 @@
-## Documnetation
+## Documentation
 
 Minesweeper is a two component project written in Python3.
 
